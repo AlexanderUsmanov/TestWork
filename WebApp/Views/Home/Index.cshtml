@@ -4,27 +4,90 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Тестовое задание</title>
+    <title>Test work</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body class="container">
     <div class="page-header">
-        <h1>Тестовое задание</h1>
+        <h1>Test work</h1>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-lg-6">
             <form class="row">
-                <div class="col-md-9">
+                <div class="col-lg-9">
                     <input type="text" class="form-control" placeholder="Github user name">
                 </div>
-                <button type="submit" class="btn btn-default col-md-3">Search</button>
+                <button type="submit" class="btn btn-default col-md-3 search-button">Search</button>
             </form>
-            <div class="row" id="user-widget">
-                
+            <div class="panel panel-primary user-widget" style="margin-top: 10px">
+                <div class="panel-heading">Github user</div>
+                <div class="panel-body list-group">
+                    <div class="list-group-item user-name">Name: The Octocat</div>
+                    <div class="list-group-item user-followers">Followers count: 1345</div>
+                    <div class="list-group-item user-repos">
+                        <div class="btn btn-default">Public repos: 5</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-primary repos-widget">
+                <div class="panel-heading">Public repos</div>
+
+                <table class="table repos-table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Stargazzers count</th>
+                        <th>Show stargazzers</th>
+                    </tr>
+                    </thead>
+                    <tbody class="repos-table-body">
+                    <tr>
+                        <td>1</td>
+                        <td>git-consortium</td>
+                        <td>6</td>
+                        <td>
+                            <div class="btn btn-default">Show stargazzers</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>hello-worId</td>
+                        <td>13</td>
+                        <td>
+                            <div class="btn btn-default">Show stargazzers</div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-4">
+            <div class="panel panel-primary stargezers-widget">
+                <div class="panel-heading">Stargazers</div>
+
+                <table class="table stargezers-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Login</th>
+                        </tr>
+                    </thead>
+                    <tbody class="stargezers-table-body">
+                        <tr>
+                            <td>1</td>
+                            <td>MySugar2011</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>tofaelmax</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </body>
