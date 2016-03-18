@@ -1,6 +1,9 @@
 ﻿function GithubUserViewModel() {
     var self = this;
 
+    self.githubUserLogin = ko.observable();
+    self.githubUser = ko.observable({show:false});
+
     self.name = ko.observable();
     self.followerscount = ko.observable();
     self.publicrepos = ko.observable();

@@ -16,13 +16,27 @@
     </div>
 <div class="row">
     <div class="col-lg-6">
-        <form class="row" data-bind="submit: searchUser">
+        <search-widget params="githubUserLogin: githubUserLogin, githubUser:githubUser"></search-widget>
+        <div class="panel panel-primary user-widget" style="margin-top: 10px" data-bind="visible: githubUser().show">
+            <div class="panel-heading">Github user</div>
+            <div class="panel-body list-group">
+                <div class="list-group-item user-name">Name: <span data-bind="text: githubUser().name" /></div>
+                <div class="list-group-item user-followers">Followers count: <span data-bind="text: githubUser().followerscount" /></div>
+                <div class="list-group-item user-repos">
+                    <div class="btn btn-default" data-bind="click: getRepos">Public repos: <span data-bind="text: githubUser().publicrepos" /></div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <form class="row hidden" data-bind="submit: searchUser">
             <div class="col-lg-9">
                 <input type="text" class="form-control" Id="userName" placeholder="Github user name">
             </div>
             <button type="submit" class="btn btn-default col-md-3 search-button">Search</button>
         </form>
-        <div class="panel panel-primary user-widget" style="margin-top: 10px" data-bind="visible: showUserWidget">
+        <div class="panel panel-primary user-widget hidden" style="margin-top: 10px" data-bind="visible: showUserWidget">
             <div class="panel-heading">Github user</div>
             <div class="panel-body list-group">
                 <div class="list-group-item user-name">Name: <span data-bind="text: name"/></div>
@@ -46,11 +60,12 @@
                 </thead>
 
                 <tbody class="repos-table-body" data-bind="foreach: repos">
-                    <tr>
-                        <td data-bind="text: Name"></td>
-                        <td data-bind="text: Stargazers_Count"></td>
-                        <td data-bind="visible: Stargazers_Count > 0"><div class="btn btn-default" data-bind="click: $root.getStargazers">Show stargazzers</div></td>
-                    </tr>
+                <tr>
+                    <td data-bind="text: Name"></td>
+                    <td data-bind="text: Stargazers_Count"></td>
+                    <td data-bind="visible: Stargazers_Count > 0">
+                        <div class="btn btn-default" data-bind="click: $root.getStargazers">Show stargazzers</div></td>
+                </tr>
                 </tbody>
             </table>
         </div>
@@ -68,9 +83,9 @@
                 </thead>
 
                 <tbody class="repos-table-body" data-bind="foreach: stargazers">
-                    <tr>
-                        <td data-bind="text: Login"></td>
-                    </tr>
+                <tr>
+                    <td data-bind="text: Login"></td>
+                </tr>
                 </tbody>
             </table>
         </div>
