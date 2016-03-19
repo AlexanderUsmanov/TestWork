@@ -171,7 +171,10 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\GithubViewModels\GithubUserViewModel.js" />
+    <Content Include="Scripts\GithubViewModels\widgets\repos-widget.js" />
     <Content Include="Scripts\GithubViewModels\widgets\search-widget.js" />
+    <Content Include="Scripts\GithubViewModels\widgets\stargazers-widget.js" />
+    <Content Include="Scripts\GithubViewModels\widgets\user-widget.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

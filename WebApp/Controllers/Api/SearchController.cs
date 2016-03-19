@@ -3,6 +3,8 @@ using System.Web.Http;
 using GithubApiWrapper;
 using GithubApiWrapper.Models;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 
 namespace WebApp.Controllers
 {
@@ -17,9 +19,14 @@ namespace WebApp.Controllers
 
         [HttpGet]
         [Route("users/{userName}")]
-        public Task<User> Users(string userName)
+        public async Task<HttpResponseMessage> Users(string userName)
         {
-            return _client.GetUserAsync(userName);
+            var result = await _client.GetUserAsync(userName);
+            if (result != null)
+            {
+                return Request.CreateResponse(result);
+            }
+            return Request.CreateErrorResponse(HttpStatusCode.NotFound, $"User with login {userName} not found");
         }
 
         [HttpGet]

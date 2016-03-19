@@ -16,82 +16,16 @@
     </div>
 <div class="row">
     <div class="col-lg-6">
-        <search-widget params="githubUserLogin: githubUserLogin, githubUser:githubUser"></search-widget>
-        <div class="panel panel-primary user-widget" style="margin-top: 10px" data-bind="visible: githubUser().show">
-            <div class="panel-heading">Github user</div>
-            <div class="panel-body list-group">
-                <div class="list-group-item user-name">Name: <span data-bind="text: githubUser().name" /></div>
-                <div class="list-group-item user-followers">Followers count: <span data-bind="text: githubUser().followerscount" /></div>
-                <div class="list-group-item user-repos">
-                    <div class="btn btn-default" data-bind="click: getRepos">Public repos: <span data-bind="text: githubUser().publicrepos" /></div>
-                </div>
-            </div>
-        </div>
-
-
-
-        <form class="row hidden" data-bind="submit: searchUser">
-            <div class="col-lg-9">
-                <input type="text" class="form-control" Id="userName" placeholder="Github user name">
-            </div>
-            <button type="submit" class="btn btn-default col-md-3 search-button">Search</button>
-        </form>
-        <div class="panel panel-primary user-widget hidden" style="margin-top: 10px" data-bind="visible: showUserWidget">
-            <div class="panel-heading">Github user</div>
-            <div class="panel-body list-group">
-                <div class="list-group-item user-name">Name: <span data-bind="text: name"/></div>
-                <div class="list-group-item user-followers">Followers count: <span data-bind="text: followerscount"/></div>
-                <div class="list-group-item user-repos">
-                    <div class="btn btn-default" data-bind="click: getRepos">Public repos: <span data-bind="text: publicrepos"/></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="panel panel-primary repos-widget" data-bind="visible: showUserWidget && showReposWidget">
-            <div class="panel-heading">Public repos</div>
-
-            <table class="table repos-table" data-bind="with: reposData">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Stargazzers count</th>
-                    <th>Show stargazzers</th>
-                </tr>
-                </thead>
-
-                <tbody class="repos-table-body" data-bind="foreach: repos">
-                <tr>
-                    <td data-bind="text: Name"></td>
-                    <td data-bind="text: Stargazers_Count"></td>
-                    <td data-bind="visible: Stargazers_Count > 0">
-                        <div class="btn btn-default" data-bind="click: $root.getStargazers">Show stargazzers</div></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+        <search-widget params="githubUser:githubUser"></search-widget>
+        <user-widget params="githubUser: githubUser"></user-widget>
+        <repos-widget params="githubUser: githubUser"></repos-widget>
     </div>
     <div class="col-lg-1"></div>
     <div class="col-lg-4">
-        <div class="panel panel-primary stargezers-widget" data-bind="visible: showUserWidget && showReposWidget && showStargazersWidget">
-            <div class="panel-heading">Stargazers</div>
-
-            <table class="table stargezers-table" data-bind="with: stargazersData">
-                <thead>
-                <tr>
-                    <th>Login</th>
-                </tr>
-                </thead>
-
-                <tbody class="repos-table-body" data-bind="foreach: stargazers">
-                <tr>
-                    <td data-bind="text: Login"></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+        <stargazers-widget params="githubUser: githubUser"></stargazers-widget>
     </div>
 </div>
-
-    @Scripts.Render("~/bundles/knockout/viewmodels")
+@Scripts.Render("~/bundles/knockout/widgets")
+@Scripts.Render("~/bundles/knockout/viewmodels")
 </body>
 </html>

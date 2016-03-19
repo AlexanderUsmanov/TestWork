@@ -17,10 +17,15 @@ namespace WebApp
             bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
                         "~/Scripts/knockout-3.4.0.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/knockout/viewmodels").Include(
+            bundles.Add(new ScriptBundle("~/bundles/knockout/widgets").Include(
                         "~/Scripts/GithubViewModels/widgets/search-widget.js",
-                        "~/Scripts/GithubViewModels/GithubUserViewModel.js"
+                        "~/Scripts/GithubViewModels/widgets/user-widget.js",
+                        "~/Scripts/GithubViewModels/widgets/repos-widget.js",
+                        "~/Scripts/GithubViewModels/widgets/stargazers-widget.js"
                         ));
+
+            bundles.Add(new ScriptBundle("~/bundles/knockout/viewmodels").Include(
+                        "~/Scripts/GithubViewModels/GithubUserViewModel.js"));
 
             // Используйте версию Modernizr для разработчиков, чтобы учиться работать. Когда вы будете готовы перейти к работе,
             // используйте средство сборки на сайте http://modernizr.com, чтобы выбрать только нужные тесты.

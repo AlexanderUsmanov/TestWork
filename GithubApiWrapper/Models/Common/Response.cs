@@ -4,20 +4,15 @@
     {
         public Response(string responseString)
         {
+            NegativeResult = Newtonsoft.Json.JsonConvert.DeserializeObject<NegativeResult>(responseString);
+            if (!string.IsNullOrWhiteSpace(NegativeResult.Message))
+            {
+                return;
+            }
+
             Success = true;
-            try
-            {
-                Data = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(responseString);
-                if (Data == null)
-                {
-                    Success = false;
-                    NegativeResult = Newtonsoft.Json.JsonConvert.DeserializeObject<NegativeResult>(responseString);
-                }
-            }
-            catch(Newtonsoft.Json.JsonSerializationException e)
-            {
-                NegativeResult = Newtonsoft.Json.JsonConvert.DeserializeObject<NegativeResult>(responseString);
-            }
+            NegativeResult = null;
+            Data = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(responseString);
         }
 
         public string GetJson()
